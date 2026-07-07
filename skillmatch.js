@@ -162,42 +162,42 @@ try {
 
     console.log(`${vagasEncontradas.length} vagas encontradas!\n`);
 
-//==============================================================================================================================================================================================
+//a==============================================================================================================================================================================================
 
-//USANDO O FOREACH PARA PERCORRER AS VAGAS E MOSTRAR O RESULTADO DE CADA UMA
+//FUNÇÃO QUE FORMATA E EXIBI A CONTAGEM DAS ANÁLISES OBTIDAS
 
-let contadorDeAnalises = 0
+function formatarContadorDeAnalises(contadorDeAnalises) {
+  return function () {
+    if (contadorDeAnalises > 0){
+      return `Número de análises obtidas: ${contadorDeAnalises}`
+    } else {
+    return `Sem análises obtidas`
+  }}
+}
 
-vagas.forEach((vaga) => {
-  let percentual  = calcularCompatibilidade(candidato, vaga);
-  let compativies = habilidadesEncontradas(candidato, vaga);
-  let classificacao = classificaCompatibilidade(percentual);
-  let faltantes   = listaHabilidadesFaltantes(candidato, vaga);
+let resultado = formatarContadorDeAnalises(contadorDeAnalises)
 
-  console.log("====== ANALISE VAGAS ======")
+console.log(resultado())
 
-  console.log("Empresa:", vaga.empresa);
-  console.log("Cargo:", vaga.cargo);
-  console.log("Compatibilidade:", percentual + "%");
-  console.log("Habilidades Compatíveis:", compativies);
-  console.log("Habilidades Faltantes:", faltantes.length > 0 ? faltantes: "Todas as habilidadtes atendem os requisitos");
-  console.log("Classificação:", classificacao);
-  
-  console.log("================================================= \n")
+//FUNÇÂO COM CALLBACK
 
-  return contadorDeAnalises++
+const analiseFinal = "Análise finalizada." 
+const nomeCandidato = candidato.nome
 
-});
+function finalizarAnalise(callback) {
+  callback(nomeCandidato, analiseFinal);
+}
+function finalizarAnalise(callback) {
+  console.log(`${nomeCandidato}, revise suas habilidades faltantes e atualize seu plano de estudos.`);
+  console.log(analiseFinal)
+}
 
-let melhor = melhorVaga(candidato, vagas);
-let percentualMelhor = calcularCompatibilidade(candidato, melhor);
+finalizarAnalise(nomeCandidato)
 
-console.log("====== VAGA MAIS COMPATÍVEL ======");
-console.log(melhor.empresa, "-", melhor.cargo);
-console.log("Compatibilidade: ", percentualMelhor,"%");
-console.log("====================================== \n");
 
-console.log("====== Recomendação de Estudo ======");
-recomendarEstudos(candidato, vagas);
+}catch (erro) {
+    console.log(erro);
+  }
+}
 
-console.log("==================================== \n");
+iniciar();
