@@ -45,3 +45,33 @@ const candidato = {
   habilidades: ["HTML", "CSS", "JavaScript"],
   experiencia: 8
 };
+
+//CRIANDO ARRAY DAS VAGAS
+const vagas = [
+  new Vaga("ProSolutions", "Front-End Developer", ["HTML", "CSS", "JavaScript", "React"], 3500, "Remoto"),
+  new Vaga("DataTech", "Desenvolvedor Front-End Jr", ["HTML", "CSS", "JavaScript"], 3000, "Híbrido"),
+  new Vaga("Digital Systems", "Front-End React", ["HTML", "CSS", "JavaScript", "React", "Git"], 4200, "Híbrido")
+];
+
+//FUNÇÃO PARA CALCULAR PERCENTUAL DE COMPATIBILIDADE DAS HABILIDADES DO CANDIDATO COM REQUISITOS DA VAGA
+function calcularCompatibilidade(candidato, vaga) {
+  let match = 0;
+  
+  candidato.habilidades.forEach((habilidade) => {
+    if (vaga.requisitos.includes(habilidade)) {
+        match++;
+    }
+  });
+
+  let percentual = ((match / vaga.requisitos.length) * 100).toFixed(0);
+  
+  return percentual;
+         
+}
+
+//FUNÇÃO PARA LISTAR AS HABILIDADE COMPATIVEIS DO CANDIDATO
+function habilidadesEncontradas(candidato, vaga) {
+  return vaga.requisitos.filter((requisito) => {
+    return candidato.habilidades.includes(requisito);
+  });
+}
