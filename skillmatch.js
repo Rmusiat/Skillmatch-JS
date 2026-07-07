@@ -163,3 +163,18 @@ async function iniciar() {
     console.log(`${vagasEncontradas.length} vagas encontradas!\n`);
 
 //a==============================================================================================================================================================================================
+
+//FUNÇÃO QUE FORMATA E EXIBI A CONTAGEM DAS ANÁLISES OBTIDAS
+
+function formatarContadorDeAnalises(contadorDeAnalises) {
+  return function () {
+    if (contadorDeAnalises > 0){
+      return `Número de análises obtidas: ${contadorDeAnalises}`
+    } else {
+    return `Sem análises obtidas`
+  }}
+}
+
+let resultado = formatarContadorDeAnalises(contadorDeAnalises)
+
+console.log(resultado())
