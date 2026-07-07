@@ -75,3 +75,21 @@ function habilidadesEncontradas(candidato, vaga) {
     return candidato.habilidades.includes(requisito);
   });
 }
+
+//FUNÇÃO PARA CLASSIFICAR COMPATIBILIDADE DA VAGA
+function classificaCompatibilidade(percentual) {
+  if (percentual >= 80) {
+    return "Alta Compatibilidade";
+  } else if (percentual >= 50 & percentual <= 79) {
+    return "Média Compatibilidade";
+  } else {
+    return "Baixa Compatibilidade";
+  }
+}
+
+//FUNÇÃO PARA LISTAR AS HABILIDADES FALTANTES DO CANDIDATO
+function listaHabilidadesFaltantes(candidato, vaga) {
+  return vaga.requisitos.filter((requisito) => {
+    return !candidato.habilidades.includes(requisito);
+  });
+}
