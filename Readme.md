@@ -55,11 +55,9 @@ skillmatch-js/ │ ├── skillmatch.js └── README.md
 
 Links
 
-Kanban/Trello: https://trello.com/b/69e1651ed5f32d5203dc02af
+Kanban/Trello: https://trello.com/b/nIk5F4Xp/sctec-mini-projeto-avaliativo
 
-Repositótrio GitHub: https://github.com/Kauan-Kantovick/project-skillmatch
-
-Drive (Video Kauan): https://drive.google.com/drive/folders/1RO3fbeDNGkz-Uk8o8hkv3TtFWo5m3p2B
+Repositótrio GitHub: https://github.com/Rmusiat/Skillmatch-JS/blob/master/skillmatch.js
 
 Drive (Video Ricardo): https://drive.google.com/drive/folders/1NEp5jMmt3-bpk0Kh2i10K288lXxnY0tI
 
