@@ -156,7 +156,7 @@ function buscarVagas() {
 //FUNÇÃO USANDO ASYNC/AWAIT
 async function iniciar() {
 
-  try {
+try {
     
     let vagasEncontradas = await buscarVagas();
 
