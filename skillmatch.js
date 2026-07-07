@@ -93,3 +93,17 @@ function listaHabilidadesFaltantes(candidato, vaga) {
     return !candidato.habilidades.includes(requisito);
   });
 }
+
+//FUNÇÃO PARA ENCONTRAR A VAGA COM MAIOR COMPATIBILIDADE
+function melhorVaga(candidato, vagas) {
+ return vagas.reduce((melhor, vagaAtual) => {
+    let pMelhor = calcularCompatibilidade(candidato, melhor);
+    let pAtual  = calcularCompatibilidade(candidato, vagaAtual);
+
+    if (pMelhor > pAtual) {
+      return vagaAtual;
+    } else {
+      return melhor;
+    }
+  });
+}
