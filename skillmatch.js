@@ -107,3 +107,28 @@ function melhorVaga(candidato, vagas) {
     }
   });
 }
+
+//FUNÇÃO PARA GERAR RECOMENDAÇÃO DE ESTUDO
+function recomendarEstudos(candidato, vagas) {
+  let todasFaltantes = vagas.map((vaga) => {
+    return listaHabilidadesFaltantes(candidato, vaga);
+  });
+   
+   // TRANSFORMA O ARRAY DE ARRAYS EM UM ARRAY SIMPLES
+  let listaUnificada = [].concat(...todasFaltantes);
+
+  // REMOVE AS HABILIDADES DUPLICADAS
+  let semDuplicadas = listaUnificada.filter((habilidade, indice) => {
+    return listaUnificada.indexOf(habilidade) === indice;
+  });
+
+  // MONTA A MENSAGEM FINAL
+  let lista = semDuplicadas;
+    
+  if (todasFaltantes.length === 0) {
+    console.log("Você já tem todas as habilidades necessárias!");
+  } else {
+    console.log(`Priorize estudar ${lista}, pois esses conteúdos aparecem nas vagas analisadas.`);
+  }
+}
+
