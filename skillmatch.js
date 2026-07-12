@@ -156,13 +156,51 @@ function buscarVagas() {
 //FUNÇÃO USANDO ASYNC/AWAIT
 async function iniciar() {
 
-try {
+  try {
     
     let vagasEncontradas = await buscarVagas();
 
     console.log(`${vagasEncontradas.length} vagas encontradas!\n`);
 
 //a==============================================================================================================================================================================================
+
+//USANDO O FOREACH PARA PERCORRER AS VAGAS E MOSTRAR O RESULTADO DE CADA UMA
+
+let contadorDeAnalises = 0
+
+vagas.forEach((vaga) => {
+  let percentual  = calcularCompatibilidade(candidato, vaga);
+  let compativies = habilidadesEncontradas(candidato, vaga);
+  let classificacao = classificaCompatibilidade(percentual);
+  let faltantes   = listaHabilidadesFaltantes(candidato, vaga);
+
+  console.log("====== ANALISE VAGAS ======")
+
+  console.log("Empresa:", vaga.empresa);
+  console.log("Cargo:", vaga.cargo);
+  console.log("Compatibilidade:", percentual + "%");
+  console.log("Habilidades Compatíveis:", compativies);
+  console.log("Habilidades Faltantes:", faltantes.length > 0 ? faltantes: "Todas as habilidadtes atendem os requisitos");
+  console.log("Classificação:", classificacao);
+  
+  console.log("================================================= \n")
+
+  return contadorDeAnalises++
+
+});
+
+let melhor = melhorVaga(candidato, vagas);
+let percentualMelhor = calcularCompatibilidade(candidato, melhor);
+
+console.log("====== VAGA MAIS COMPATÍVEL ======");
+console.log(melhor.empresa, "-", melhor.cargo);
+console.log("Compatibilidade: ", percentualMelhor,"%");
+console.log("====================================== \n");
+
+console.log("====== Recomendação de Estudo ======");
+recomendarEstudos(candidato, vagas);
+
+console.log("==================================== \n");
 
 //FUNÇÃO QUE FORMATA E EXIBI A CONTAGEM DAS ANÁLISES OBTIDAS
 
